@@ -5,15 +5,21 @@ from langchain.prompts.chat import ChatPromptTemplate
 llm = Ollama(model="llama2")
 chat_model = ChatOllama()
 
-template = "You are a great assistant that translates {input_language} to {output_language}."
+template = (
+    "You are a great assistant that translates {input_language} to {output_language}."
+)
 human_template = "{text}"
 
-chat_prompt = ChatPromptTemplate.from_messages([
-    ("system", template),
-    ("human", human_template),
-])
+chat_prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", template),
+        ("human", human_template),
+    ]
+)
 
-messages = chat_prompt.format_messages(input_language="English", output_language="Italian", text="I love programming.")
+messages = chat_prompt.format_messages(
+    input_language="English", output_language="Italian", text="I love programming."
+)
 
 response = chat_model.invoke(messages)
 print(response)
