@@ -17,7 +17,7 @@ async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def list(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_input = " ".join(context.args)
-    dirlisåt = os.listdir(user_input)
+    dirlist = os.listdir(user_input)
     await update.message.reply_text(f"{dirlist}")
 
 
