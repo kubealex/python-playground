@@ -21,15 +21,24 @@ async def list(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(f"{dirlist}")
 
 
+async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text(
+        "This is a very simple bot listing directories with the '/list <path>' command"
+    )
+
+
 def main():
     env = initialize_vars()
     telegram_token = env("TELEGRAM_TOKEN")
     application = ApplicationBuilder().token(telegram_token).build()
 
-    start_handler = CommandHandler("hello", hello)
-    list_handler = CommandHandler("list", list)
-
-    application.add_handlers([start_handler, list_handler])
+    application.add_handlers(
+        [
+            CommandHandler("hello", hello),
+            CommandHandler("list", list),
+            CommandHandler("help", help),
+        ]
+    )
 
     application.run_polling()
 
