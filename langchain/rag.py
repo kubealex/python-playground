@@ -23,7 +23,8 @@ rag_prompt = PromptTemplate.from_template(template)
 
 llm = Ollama(model="llama2")
 loader = WebBaseLoader(
-    "https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html"
+    "https://www.bbc.com/news/world-us-canada-68737365"
+##  "https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html"
 )
 docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
@@ -31,9 +32,10 @@ splits = text_splitter.split_documents(docs)
 vectorstore = Chroma.from_documents(documents=splits, embedding=OllamaEmbeddings())
 retriever = vectorstore.as_retriever()
 rag_chain = (
-    {"context": retriever, "question": RunnablePassthrough()}
+    {"context": retriever, "question": input}
     | rag_prompt
     | llm
     | StrOutputParser()
 )
-print(rag_chain.invoke("What is in the document?"))
+response = rag_chain.invoke("Ready to answer your question! \n")
+print(response)
