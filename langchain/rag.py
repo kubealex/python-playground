@@ -26,7 +26,6 @@ loader = WebBaseLoader(
     "https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html"
 )
 docs = loader.load()
-print(docs)
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 splits = text_splitter.split_documents(docs)
 vectorstore = Chroma.from_documents(documents=splits, embedding=OllamaEmbeddings())
