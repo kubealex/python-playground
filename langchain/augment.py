@@ -9,7 +9,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
-llm = Ollama(model="llama2")
+llm = Ollama(model="llama3")
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system", "You are world class technical documentation writer."),

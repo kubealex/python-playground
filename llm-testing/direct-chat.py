@@ -1,7 +1,7 @@
 import ollama
 
 response = ollama.chat(
-    model="llama2",
+    model="llama3",
     messages=[
         {
             "role": "user",
@@ -11,4 +11,4 @@ response = ollama.chat(
 )
 print(response["message"]["content"])
 
-print(ollama.generate(model="llama2", prompt="What is an LLM?"))
+print(ollama.generate(model="llama", prompt="What is an LLM?"))

@@ -2,7 +2,7 @@ from langchain_community.llms import Ollama
 from langchain_community.chat_models import ChatOllama
 from langchain.prompts.chat import ChatPromptTemplate
 
-llm = Ollama(model="llama2")
+llm = Ollama(model="llama3")
 chat_model = ChatOllama()
 
 template = (
