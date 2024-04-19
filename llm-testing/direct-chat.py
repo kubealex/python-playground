@@ -11,4 +11,4 @@ response = ollama.chat(
 )
 print(response["message"]["content"])
 
-print(ollama.generate(model="llama", prompt="What is an LLM?"))
+print(ollama.generate(model="llama3", prompt="What is an LLM?"))
