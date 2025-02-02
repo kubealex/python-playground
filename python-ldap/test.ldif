@@ -1,0 +1,11 @@
+dn: uid=adam,cn=users,cn=accounts,dc=rh-lab,dc=labs
+objectClass: account
+objectClass: ipaUser
+objectClass: posixAccount
+cn: adam
+uid: adam
+uidNumber: 16859
+gidNumber: 100
+homeDirectory: /home/adam
+loginShell: /bin/bash
+gecos: adam
